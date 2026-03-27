@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Touch Football Weltmeisterschaft 2026 Bewerbung</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a7a3c;
+    --green-light: #23a851;
+    --green-dark: #0f4d24;
+    --green-bg: #e8f5ed;
+    --field-green: #1a5c2a;
+    --gold: #e8b84b;
+    --gold-light: #f5d080;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --bg: #f4f4f0;
+    --card: #fff;
+    --border: rgba(0,0,0,0.08);
+    --danger: #c0392b;
+    --success: #27ae60;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--field-green);
+    color: #fff;
+    text-align: center;
+    padding: 3rem 1.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 40px,
+      transparent 40px,
+      transparent 80px
+    );
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--gold-light);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 span { color: var(--gold); }
+
+  .subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    position: relative;
+    z-index: 1;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    padding: 1rem 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover { color: var(--green); }
+  .tab-btn.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  .form-section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .form-section.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--green-bg);
+  }
+
+  .section-icon {
+    width: 36px; height: 36px;
+    background: var(--green-bg);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .field { margin-bottom: 1.25rem; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  label .required { color: var(--danger); margin-left: 2px; }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(26,122,60,0.1);
+    background: #fff;
+  }
+
+  textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23555' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 500px) { .two-col { grid-template-columns: 1fr; } }
+
+  .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fafafa;
+  }
+
+  .checkbox-item:hover { border-color: var(--green); background: var(--green-bg); }
+  .checkbox-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--green); cursor: pointer; }
+  .checkbox-item span { font-size: 14px; }
+
+  .rule-question {
+    background: #fafafa;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .rule-question p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .rule-options { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .rule-option {
+    flex: 1; min-width: 80px;
+    padding: 7px 12px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    background: #fff;
+    transition: all 0.15s;
+    color: var(--text-muted);
+  }
+
+  .rule-option:hover { border-color: var(--green); color: var(--green); }
+  .rule-option.selected { border-color: var(--green); background: var(--green-bg); color: var(--green-dark); font-weight: 600; }
+
+  .info-box {
+    background: #fffbec;
+    border: 1px solid #f5d080;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-size: 14px;
+    color: #7a5c0a;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .webhook-field {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .webhook-field input { flex: 1; }
+
+  .btn-test {
+    padding: 0 16px;
+    border: 1.5px solid var(--green);
+    background: none;
+    color: var(--green);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .btn-test:hover { background: var(--green-bg); }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-submit:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,122,60,0.25); }
+  .btn-submit:disabled { background: #999; transform: none; box-shadow: none; cursor: not-allowed; }
+
+  .nav-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.5rem;
+  }
+
+  .btn-back, .btn-next {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-back { background: none; border: 1.5px solid #ddd; color: var(--text-muted); }
+  .btn-back:hover { border-color: #bbb; color: var(--text); }
+
+  .btn-next { background: var(--green); border: none; color: #fff; }
+  .btn-next:hover { background: var(--green-dark); }
+
+  .progress-bar {
+    height: 3px;
+    background: #e8e8e8;
+    position: sticky;
+    top: 53px;
+    z-index: 99;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--green-light));
+    transition: width 0.3s ease;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 999;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { background: var(--success); }
+  .toast.error { background: var(--danger); }
+
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .success-icon {
+    width: 80px; height: 80px;
+    background: var(--green-bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .success-screen h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    color: var(--green-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .success-screen p { color: var(--text-muted); font-size: 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">🚦 Touch Football WM 2026</div>
+  <h1>Offizielles <span>Bewerbungsformular</span></h1>
+  <p class="subtitle">Schiedsrichter & Staff – Touch Football Weltmeisterschaft 2026</p>
+</header>
+
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:25%"></div></div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="goTo(0)">1. Profil</button>
+  <button class="tab-btn" onclick="goTo(1)">2. Erfahrung</button>
+  <button class="tab-btn" onclick="goTo(2)">3. Regelwissen</button>
+  <button class="tab-btn" onclick="goTo(3)">4. Absenden</button>
+</div>
+
+<div class="container">
+
+  <!-- SECTION 1: Profil -->
+  <div class="form-section active" id="section-0">
+    <div class="section-header">
+      <div class="section-icon">👤</div>
+      <div class="section-title">Persönliche Infos</div>
+    </div>
+
+    <div class="card">
+      <div class="two-col">
+        <div class="field">
+          <label>Discord Name <span class="required">*</span></label>
+          <input type="text" id="discord-name" placeholder="z.B. max_muster#1234">
+        </div>
+        <div class="field">
+          <label>Roblox Name <span class="required">*</span></label>
+          <input type="text" id="roblox-name" placeholder="z.B. MaxMuster123">
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>Alter <span class="required">*</span></label>
+          <input type="number" id="alter" placeholder="z.B. 16" min="10" max="99">
+        </div>
+        <div class="field">
+          <label>Bewerbung für <span class="required">*</span></label>
+          <select id="position">
+            <option value="">— Bitte wählen —</option>
+            <option value="Schiedsrichter">🏈 Schiedsrichter</option>
+            <option value="Staff" disabled>🛡️ Staff (Bewerbungen geschlossen)</option>
+            <option value="Schiedsrichter & Staff" disabled>🏈🛡️ Schiedsrichter & Staff (Staff geschlossen)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Verfügbarkeit <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" class="verfuegbarkeit" value="Mo–Fr Nachmittag"> <span>Mo–Fr Nachmittag (14–18 Uhr)</span></label>
+          <label class="checkbox-item"><input type="checkbox" class="verfuegbarkeit" value="Mo–Fr Abend"> <span>Mo–Fr Abend (18–22 Uhr)</span></label>
+          <label class="checkbox-item"><input type="checkbox" class="verfuegbarkeit" value="Wochenende Tagsüber"> <span>Wochenende Tagsüber</span></label>
+          <label class="checkbox-item"><input type="checkbox" class="verfuegbarkeit" value="Wochenende Abend"> <span>Wochenende Abend</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn-next" onclick="nextSection(0)">Weiter →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Erfahrung -->
+  <div class="form-section" id="section-1">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <div class="section-title">Erfahrung</div>
+    </div>
+
+    <div class="card">
+      <div class="field">
+        <label>Allgemeine Roblox-Erfahrung <span class="required">*</span></label>
+        <select id="roblox-erfahrung">
+          <option value="">— Bitte wählen —</option>
+          <option value="Weniger als 1 Jahr">Weniger als 1 Jahr</option>
+          <option value="1–2 Jahre">1–2 Jahre</option>
+          <option value="3–5 Jahre">3–5 Jahre</option>
+          <option value="Mehr als 5 Jahre">Mehr als 5 Jahre</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>RP-Liga / Fußball-Erfahrung <span class="required">*</span></label>
+        <textarea id="liga-erfahrung" placeholder="Beschreibe deine Erfahrung in RP-Ligen oder Roblox-Fußball. Welche Ligen? Welche Rollen?"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Wo hast du schon gepfiffen? (Schiedsrichter-Erfahrung)</label>
+        <textarea id="pfiff-erfahrung" placeholder="Falls vorhanden: In welchen Ligen oder Spielen hast du als Schiedsrichter gepfiffen? Falls keine Erfahrung, schreib 'Keine'"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Warum möchtest du mitmachen? <span class="required">*</span></label>
+        <textarea id="motivation" placeholder="Was motiviert dich, dich zu bewerben? Was kannst du zum Team beitragen?"></textarea>
+      </div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevSection(1)">← Zurück</button>
+      <button class="btn-next" onclick="nextSection(1)">Weiter →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Regelwissen -->
+  <div class="form-section" id="section-2">
+    <div class="section-header">
+      <div class="section-icon">📖</div>
+      <div class="section-title">Regelwissen</div>
+    </div>
+
+    <div class="card">
+      <div class="rule-question" id="q1">
+        <p>1. Der Torwart nimmt einem Ausreißer den Ball mit der Hand weg. Was entscheidest du?</p>
+        <div class="rule-options">
+          <div class="rule-option" onclick="selectRule('q1','Elfmeter')">Elfmeter</div>
+          <div class="rule-option" onclick="selectRule('q1','Freistoß')">Freistoß</div>
+          <div class="rule-option" onclick="selectRule('q1','Weiterspielen')">Weiterspielen</div>
+          <div class="rule-option" onclick="selectRule('q1','Rote Karte + Elfmeter')">Rote Karte + Elfmeter</div>
+        </div>
+      </div>
+
+      <div class="rule-question" id="q2">
+        <p>2. Ein Spieler beleidigt den Schiedsrichter. Welche Karte zeigst du?</p>
+        <div class="rule-options">
+          <div class="rule-option" onclick="selectRule('q2','Gelb')">Gelb</div>
+          <div class="rule-option" onclick="selectRule('q2','Gelb-Rot')">Gelb-Rot</div>
+          <div class="rule-option" onclick="selectRule('q2','Rot (direkt)')">Rot (direkt)</div>
+          <div class="rule-option" onclick="selectRule('q2','Keine')">Keine</div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:1rem">
+        <label>Weitere Kommentare / Anmerkungen</label>
+        <textarea id="kommentar" placeholder="Optional: Gibt es noch etwas, das du uns mitteilen möchtest?"></textarea>
+      </div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn-back" onclick="prevSection(2)">← Zurück</button>
+      <button class="btn-next" onclick="nextSection(2)">Weiter →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Absenden -->
+  <div class="form-section" id="section-3">
+    <div class="section-header">
+      <div class="section-icon">🚀</div>
+      <div class="section-title">Absenden</div>
+    </div>
+
+    <div class="info-box">
+      <span>✅</span>
+      <div>
+        <strong>Fast geschafft!</strong><br>
+        Überprüfe deine Angaben und klicke auf „Bewerbung abschicken". Deine Bewerbung wird direkt an das Team weitergeleitet.
+      </div>
+    </div>
+
+    <button class="btn-submit" id="submit-btn" onclick="submitBewerbung()">
+      <span>✅</span> Bewerbung abschicken
+    </button>
+
+    <div class="nav-btns" style="margin-top:1rem">
+      <button class="btn-back" onclick="prevSection(3)">← Zurück</button>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">✅</div>
+    <h2>Bewerbung gesendet!</h2>
+    <p>Deine Bewerbung wurde erfolgreich an den Discord-Kanal gesendet.<br>Das Team meldet sich bald bei dir!</p>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let currentSection = 0;
+const totalSections = 4;
+const ruleAnswers = {};
+
+function goTo(index) {
+  document.querySelectorAll('.form-section').forEach((s,i) => {
+    s.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', i === index);
+  });
+  currentSection = index;
+  document.getElementById('progress').style.width = ((index+1)/totalSections*100) + '%';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function nextSection(from) {
+  if (!validateSection(from)) return;
+  goTo(from + 1);
+}
+
+function prevSection(from) {
+  goTo(from - 1);
+}
+
+function validateSection(idx) {
+  if (idx === 0) {
+    if (!v('discord-name')) return showToast('⚠️ Discord Name fehlt', 'error'), false;
+    if (!v('roblox-name')) return showToast('⚠️ Roblox Name fehlt', 'error'), false;
+    if (!v('alter')) return showToast('⚠️ Alter fehlt', 'error'), false;
+
+    const alterVal = parseInt(document.getElementById('alter').value.trim());
+    if (alterVal <= 12) {
+      showToast('❌ Du bist leider zu jung (Voice-Überprüfung wird durchgeführt)', 'error');
+      return false;
+    }
+
+    const pos = document.getElementById('position').value;
+    if (!pos) return showToast('⚠️ Bitte wähle eine Position', 'error'), false;
+    if (pos === 'Staff' || pos === 'Schiedsrichter & Staff') {
+      showToast('❌ Staff-Bewerbungen sind derzeit geschlossen', 'error');
+      return false;
+    }
+
+    const verf = [...document.querySelectorAll('.verfuegbarkeit:checked')];
+    if (verf.length === 0) return showToast('⚠️ Bitte mindestens eine Verfügbarkeit wählen', 'error'), false;
+  }
+  if (idx === 1) {
+    if (!v('roblox-erfahrung')) return showToast('⚠️ Roblox-Erfahrung fehlt', 'error'), false;
+    if (!v('liga-erfahrung')) return showToast('⚠️ Liga-Erfahrung fehlt', 'error'), false;
+    if (!v('motivation')) return showToast('⚠️ Motivation fehlt', 'error'), false;
+  }
+  return true;
+}
+
+function v(id) {
+  const el = document.getElementById(id);
+  return el && el.value.trim() !== '';
+}
+
+function selectRule(question, answer) {
+  ruleAnswers[question] = answer;
+  document.querySelectorAll('#' + question + ' .rule-option').forEach(opt => {
+    opt.classList.toggle('selected', opt.textContent.trim() === answer || opt.getAttribute('onclick').includes(`'${answer}'`));
+  });
+}
+
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1487103928008052829/Kz9ktaPq9j_GBCsEE3_SZb31LhljmXMMWqcvBYevc2estzAMuDBpmXMm718qFfYas2zt';
+
+async function submitBewerbung() {
+  const discord = document.getElementById('discord-name').value.trim();
+  const roblox = document.getElementById('roblox-name').value.trim();
+  const alter = document.getElementById('alter').value.trim();
+  const position = document.getElementById('position').value;
+  const verf = [...document.querySelectorAll('.verfuegbarkeit:checked')].map(c => c.value).join(', ');
+  const robloxExp = document.getElementById('roblox-erfahrung').value;
+  const ligaExp = document.getElementById('liga-erfahrung').value.trim();
+  const pfiffExp = document.getElementById('pfiff-erfahrung').value.trim() || 'Keine Angabe';
+  const motivation = document.getElementById('motivation').value.trim();
+  const kommentar = document.getElementById('kommentar').value.trim() || 'Keine';
+
+  const r1 = ruleAnswers['q1'] || 'Nicht beantwortet';
+  const r2 = ruleAnswers['q2'] || 'Nicht beantwortet';
+
+  const embed = {
+    title: '🚦 Neue Bewerbung – Touch Football Weltmeisterschaft 2026',
+    color: 0x1a7a3c,
+    thumbnail: { url: 'https://i.imgur.com/OKy2Hge.png' },
+    fields: [
+      { name: '👤 Discord Name', value: discord, inline: true },
+      { name: '🎮 Roblox Name', value: roblox, inline: true },
+      { name: '🎂 Alter', value: alter + ' Jahre', inline: true },
+      { name: '🏅 Bewerbung für', value: position, inline: true },
+      { name: '🕒 Verfügbarkeit', value: verf || 'Keine Angabe', inline: false },
+      { name: '📅 Roblox-Erfahrung', value: robloxExp, inline: true },
+      { name: '🏈 Liga-Erfahrung', value: ligaExp.length > 200 ? ligaExp.slice(0, 200) + '...' : ligaExp, inline: false },
+      { name: '🚩 Schiedsrichter – Wo gepfiffen?', value: pfiffExp.length > 200 ? pfiffExp.slice(0, 200) + '...' : pfiffExp, inline: false },
+      { name: '💬 Motivation', value: motivation.length > 300 ? motivation.slice(0, 300) + '...' : motivation, inline: false },
+      { name: '\u200b', value: '**📖 Regelwissen**', inline: false },
+      { name: 'F1 – Torwart nimmt Ausreißer Ball mit Hand', value: r1 === 'Rote Karte + Elfmeter' ? '✅ ' + r1 : '❌ ' + r1, inline: true },
+      { name: 'F2 – Beleidigung des SR', value: r2 === 'Rot (direkt)' ? '✅ ' + r2 : '❌ ' + r2, inline: true },
+      { name: '📝 Kommentar', value: kommentar, inline: false }
+    ],
+    footer: { text: 'Touch Football Weltmeisterschaft 2026 – Bewerbungsformular • ' + new Date().toLocaleDateString('de-DE', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'}) }
+  };
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span>⏳</span> Wird gesendet...';
+
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ username: 'TF WM 2026 Bewerbung', embeds: [embed] })
+    });
+
+    if (res.ok) {
+      document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+      document.querySelectorAll('.tabs, .progress-bar').forEach(el => el.style.display = 'none');
+      document.getElementById('success-screen').style.display = 'block';
+    } else {
+      showToast('❌ Fehler beim Senden: ' + res.status, 'error');
+      btn.disabled = false;
+      btn.innerHTML = '<span>✅</span> Bewerbung abschicken';
+    }
+  } catch (e) {
+    showToast('❌ Netzwerkfehler', 'error');
+    btn.disabled = false;
+    btn.innerHTML = '<span>✅</span> Bewerbung abschicken';
+  }
+}
+</script>
+</body>
+</html>
